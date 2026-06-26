@@ -273,7 +273,7 @@ terraform destroy
 ## Nginx Successfully Running
 
 <p align="center">
-<img src="screenshots/6-nginx-page.png">
+<img src="screenshots/6-nginx.png">
 </p>
 
 ---
