@@ -9,6 +9,7 @@ Provisioning AWS Infrastructure using **Terraform (Infrastructure as Code)**.
 ![EC2](https://img.shields.io/badge/EC2-Deployed-success?style=for-the-badge)
 ![GitHub](https://img.shields.io/badge/GitHub-Portfolio-black?style=for-the-badge&logo=github)
 
+> 🚀 End-to-end AWS infrastructure provisioning using Terraform with a custom VPC, EC2, Security Groups, S3 remote state, and DynamoDB state locking.
 </div>
 
 ---
@@ -30,6 +31,20 @@ The infrastructure includes:
 - 🔐 State Locking using DynamoDB
 
 ---
+## 📑 Table of Contents
+
+- 📖 Overview
+- 🏛️ Architecture
+- ✨ Features
+- 🛠️ Technologies Used
+- 📂 Project Structure
+- ⚙️ Prerequisites
+- 🚀 Quick Start
+- 📸 Screenshots
+- 📚 Skills Demonstrated
+- 🎯 Resume Highlights
+- 🚀 Future Improvements
+- 👨‍💻 Author
 
 # 🏛️ Architecture
 
@@ -114,71 +129,111 @@ Before starting, ensure you have:
 
 ---
 
-# 🚀 Deployment Steps
+# 🚀 Quick Start
 
-## 1️⃣ Clone Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/terraform-aws-infrastructure.git
 cd terraform-aws-infrastructure
 ```
 
----
+### 2. Create a Terraform variables file
 
-## 2️⃣ Initialize Terraform
+Copy the example file:
+
+```bash
+cp example.tfvars terraform.tfvars
+```
+
+Edit `terraform.tfvars` and replace the placeholder with your AWS EC2 key pair name.
+
+```hcl
+key_name = "your-key-pair-name"
+```
+
+### 3. Initialize Terraform
 
 ```bash
 terraform init
 ```
 
----
-
-## 3️⃣ Format Code
-
-```bash
-terraform fmt
-```
-
----
-
-## 4️⃣ Validate Configuration
+### 4. Validate the configuration
 
 ```bash
 terraform validate
 ```
 
----
-
-## 5️⃣ Review Execution Plan
+### 5. Preview the infrastructure
 
 ```bash
 terraform plan
 ```
 
----
-
-## 6️⃣ Deploy Infrastructure
+### 6. Deploy the infrastructure
 
 ```bash
 terraform apply
 ```
 
----
+Type:
 
-## 7️⃣ Destroy Infrastructure
+```text
+yes
+```
+
+when prompted.
+
+### 7. Access the web server
+
+Open your browser:
+
+```text
+http://<EC2_PUBLIC_IP>
+```
+
+You should see the default **Nginx Welcome Page**.
+
+### 8. Destroy the infrastructure
 
 ```bash
 terraform destroy
 ```
+---
+# 🔄 Project Workflow
+
+```text
+Clone Repository
+        │
+        ▼
+terraform init
+        │
+        ▼
+terraform validate
+        │
+        ▼
+terraform plan
+        │
+        ▼
+terraform apply
+        │
+        ▼
+AWS Infrastructure Created
+        │
+        ▼
+Access Nginx via Public IP
+        │
+        ▼
+terraform destroy
+```
 
 ---
-
-# 📸 Project Demonstration
+# 📸 Project Screenshots
 
 ## Terraform Initialization
 
 <p align="center">
-<img src="screenshots/01-terraform-init.png">
+<img src="screenshots/1-terraform-init.png">
 </p>
 
 ---
@@ -186,7 +241,7 @@ terraform destroy
 ## Terraform Apply
 
 <p align="center">
-<img src="screenshots/02-terraform-apply.png">
+<img src="screenshots/2-terraform-apply.png">
 </p>
 
 ---
@@ -194,7 +249,7 @@ terraform destroy
 ## EC2 Instance Running
 
 <p align="center">
-<img src="screenshots/03-ec2-instance.png">
+<img src="screenshots/3-ec2-instance.png">
 </p>
 
 ---
@@ -202,7 +257,7 @@ terraform destroy
 ## VPC Configuration
 
 <p align="center">
-<img src="screenshots/04-vpc.png">
+<img src="screenshots/4-vpc.png">
 </p>
 
 ---
@@ -210,7 +265,7 @@ terraform destroy
 ## Security Group
 
 <p align="center">
-<img src="screenshots/05-security-group.png">
+<img src="screenshots/5-security-group.png">
 </p>
 
 ---
@@ -218,7 +273,7 @@ terraform destroy
 ## Nginx Successfully Running
 
 <p align="center">
-<img src="screenshots/06-nginx-page.png">
+<img src="screenshots/6-nginx-page.png">
 </p>
 
 ---
@@ -226,7 +281,7 @@ terraform destroy
 ## Remote State Backend (S3)
 
 <p align="center">
-<img src="screenshots/07-s3-backend.png">
+<img src="screenshots/7-s3-backend.png">
 </p>
 
 ---
@@ -234,11 +289,23 @@ terraform destroy
 ## Infrastructure Destroyed
 
 <p align="center">
-<img src="screenshots/08-terraform-destroy.png">
+<img src="screenshots/8-terraform-destroy.png">
 </p>
 
 ---
+# 🎓 Learning Outcomes
 
+Through this project, I gained hands-on experience with:
+
+- Infrastructure as Code (IaC)
+- AWS Networking (VPC, Subnets, Route Tables)
+- Amazon EC2 provisioning
+- Security Group configuration
+- Remote Terraform state using Amazon S3
+- State locking with DynamoDB
+- Git and GitHub version control
+  
+---
 # 📚 Skills Demonstrated
 
 - Terraform
@@ -277,6 +344,9 @@ terraform destroy
 - Monitoring using Amazon CloudWatch
 
 ---
+# 📄 License
+
+This project is licensed under the MIT License.
 
 # 👨‍💻 Author
 
