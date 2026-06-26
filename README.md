@@ -46,13 +46,43 @@ The infrastructure includes:
 - 🚀 Future Improvements
 - 👨‍💻 Author
 
-# 🏛️ Architecture
+## 🏛️ Architecture
 
-> Add your architecture diagram here.
+```mermaid
+flowchart LR
+    User([👤 User])
 
-<p align="center">
-<img src="images/architecture.png" width="850">
-</p>
+    Internet((🌐 Internet))
+    IGW[Internet Gateway]
+
+    subgraph AWS["AWS Cloud"]
+        subgraph VPC["VPC (10.0.0.0/16)"]
+            PublicSubnet["Public Subnet (10.0.1.0/24)"]
+            SG["Security Group<br/>SSH (22)<br/>HTTP (80)"]
+            EC2["EC2 Instance<br/>Amazon Linux 2"]
+            NGINX["Nginx Web Server"]
+        end
+    end
+
+    User --> Internet
+    Internet --> IGW
+    IGW --> PublicSubnet
+    PublicSubnet --> SG
+    SG --> EC2
+    EC2 --> NGINX
+```
+## ☁️ Remote State Architecture
+
+```mermaid
+flowchart LR
+
+Terraform["Terraform CLI"]
+S3["Amazon S3<br/>Terraform State"]
+DDB["Amazon DynamoDB<br/>State Lock"]
+
+Terraform -->|Read / Write| S3
+Terraform -->|Lock / Unlock| DDB
+```
 
 ---
 
@@ -200,31 +230,31 @@ You should see the default **Nginx Welcome Page**.
 terraform destroy
 ```
 ---
-# 🔄 Project Workflow
+## 🔄 Project Workflow
 
-```text
-Clone Repository
-        │
-        ▼
-terraform init
-        │
-        ▼
-terraform validate
-        │
-        ▼
-terraform plan
-        │
-        ▼
-terraform apply
-        │
-        ▼
-AWS Infrastructure Created
-        │
-        ▼
-Access Nginx via Public IP
-        │
-        ▼
-terraform destroy
+```mermaid
+flowchart TD
+
+A[Clone Repository]
+B[Create terraform.tfvars]
+C[terraform init]
+D[terraform validate]
+E[terraform plan]
+F[terraform apply]
+G[AWS Infrastructure Created]
+H[Access Nginx via Public IP]
+I[terraform destroy]
+J[Infrastructure Removed]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+H --> I
+I --> J
 ```
 
 ---
